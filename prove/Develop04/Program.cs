@@ -43,6 +43,6 @@ class Program
                     }
                 }
             }
-            Console.WriteLine($"Thanks for beeing with us in this activity, you performed {numberOfActivities} activities. See you soon!");
+            Console.WriteLine($"Thanks for being with us in this activity, you performed {numberOfActivities} activities. See you soon!");
     }
 }
