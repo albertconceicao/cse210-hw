@@ -146,60 +146,60 @@ public class GoalManager
     }
 
     public void LoadGoals()
-{
-    Console.WriteLine("What is the filename for the goal file? ");
-    string filename = Console.ReadLine();
-    string[] lines = System.IO.File.ReadAllLines(filename);
-
-    if (lines.Length > 0)
     {
- 
-        string _score = lines[0];
-        Console.WriteLine($"Score: {_score}");
+        Console.WriteLine("What is the filename for the goal file? ");
+        string filename = Console.ReadLine();
+        string[] lines = System.IO.File.ReadAllLines(filename);
 
-        for (int i = 1; i < lines.Length; i++)
+        if (lines.Length > 0)
         {
-            string GoalString = lines[i];
-            string[] parts = GoalString.Split(":");
+    
+            string _score = lines[0];
+            Console.WriteLine($"Score: {_score}");
 
-            string typeName = parts[0];
-            string[] parameters = parts[1].Split(',');
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string GoalString = lines[i];
+                string[] parts = GoalString.Split(":");
 
-            Console.WriteLine(typeName + ": " + parameters[0]);
+                string typeName = parts[0];
+                string[] parameters = parts[1].Split(',');
 
-                try
-                {
-                    if (typeName == "SimpleGoal" && parameters.Length >= 3)
+                Console.WriteLine(typeName + ": " + parameters[0]);
+
+                    try
                     {
-                        SimpleGoal simpleGoal = new SimpleGoal(parameters[0], parameters[1], parameters[2]);
-                        _goals.Add(simpleGoal);
+                        if (typeName == "SimpleGoal" && parameters.Length >= 3)
+                        {
+                            SimpleGoal simpleGoal = new SimpleGoal(parameters[0], parameters[1], parameters[2]);
+                            _goals.Add(simpleGoal);
+                        }
+                        else if (typeName == "EternalGoal" && parameters.Length >= 3)
+                        {
+                            EternalGoal eternalGoal = new EternalGoal(parameters[0], parameters[1], parameters[2]);
+                            _goals.Add(eternalGoal);
+                        }
+                        else if (typeName == "ChecklistGoal" && parameters.Length >= 5)
+                        {
+                            ChecklistGoal checklistGoal = new ChecklistGoal(parameters[0], parameters[1], parameters[2], int.Parse(parameters[4]), int.Parse(parameters[3]));
+                            _goals.Add(checklistGoal);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid format or insufficient parameters.");
+                        }
                     }
-                    else if (typeName == "EternalGoal" && parameters.Length >= 3)
+                    catch (Exception ex)
                     {
-                        EternalGoal eternalGoal = new EternalGoal(parameters[0], parameters[1], parameters[2]);
-                        _goals.Add(eternalGoal);
+                        Console.WriteLine($"Error creating goal: {ex.Message}");
                     }
-                    else if (typeName == "ChecklistGoal" && parameters.Length >= 5)
-                    {
-                        ChecklistGoal checklistGoal = new ChecklistGoal(parameters[0], parameters[1], parameters[2], int.Parse(parameters[4]), int.Parse(parameters[3]));
-                        _goals.Add(checklistGoal);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid format or insufficient parameters.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error creating goal: {ex.Message}");
-                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("The file is empty or does not contain enough lines.");
         }
     }
-    else
-    {
-        Console.WriteLine("The file is empty or does not contain enough lines.");
-    }
-}
 
 
 }

@@ -4,6 +4,7 @@ public class SimpleGoal: Goal
 
     public SimpleGoal(string shortName, string description, string points) :base(shortName, description, points)
     {
+        _isComplete = false;
     }
 
     public override void RecordEvent()
