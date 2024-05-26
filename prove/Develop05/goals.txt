@@ -1,4 +1,4 @@
 0
-SimpleGoal:test simple,test simple desc,100,False
-EternalGoal:test eternal,test eternal desc,200
-ChecklistGoal:Test check ,Test check desc,300,500,3,0
+SimpleGoal:Test,desc,100,False
+EternalGoal:Test eternal,eternal desc,200
+ChecklistGoal:test checklist,checklist desc,200,500,3,0
