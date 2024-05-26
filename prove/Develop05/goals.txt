@@ -1,4 +1,3 @@
 0
-SimpleGoal:Test,desc,100,False
-EternalGoal:Test eternal,eternal desc,200
-ChecklistGoal:test checklist,checklist desc,200,500,3,0
+ChecklistGoal:Attend to church every week,Attend to sacramental meeting,200,500,3,0
+SimpleGoal:Finish the project,Coding program,500,False

@@ -23,5 +23,9 @@ public abstract class Goal{
     {
         return $"{_shortName},{_description},{_points}";
     }
+    public string GetShortName()
+    {
+        return _shortName;
+    }
 
 }
