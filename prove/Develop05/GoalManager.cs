@@ -79,7 +79,7 @@ public class GoalManager
         bool isValid = int.TryParse(Console.ReadLine(), out goalCompleted);
         if (isValid && goalCompleted > 0 && goalCompleted <= _goals.Count)
         {
-            Goal selectedGoal = _goals[goalCompleted - 1]; // Índices de array começam em 0, ajustar para 1-base
+            Goal selectedGoal = _goals[goalCompleted - 1];
 
             selectedGoal.RecordEvent(); 
             string[] goalInfo = selectedGoal.GetStringRepresentation().Split(":");
@@ -155,10 +155,8 @@ public class GoalManager
             case 1:
                 Console.Write("What is the name of your goal? ");
                 shortName = Console.ReadLine();
-                Console.WriteLine();
                 Console.Write("What is a short descripton of it? ");
                 shortDescription = Console.ReadLine();
-                Console.WriteLine();
                 Console.Write("What is the amount of points associated with this goal? ");
                 points = Console.ReadLine();
                 SimpleGoal simpleGoal = new SimpleGoal(shortName, shortDescription, points, false);
@@ -167,10 +165,8 @@ public class GoalManager
             case 2:
                 Console.Write("What is the name of your goal? ");
                 shortName = Console.ReadLine();
-                Console.WriteLine();
                 Console.Write("What is a short descripton of it? ");
                 shortDescription = Console.ReadLine();
-                Console.WriteLine();
                 Console.Write("What is the amount of points associated with this goal? ");
                 points = Console.ReadLine();
                 EternalGoal eternalGoal = new EternalGoal(shortName, shortDescription, points);
@@ -179,19 +175,14 @@ public class GoalManager
             case 3:
                 Console.Write("What is the name of your goal? ");
                 shortName = Console.ReadLine();
-                Console.WriteLine();
                 Console.Write("What is a short descripton of it? ");
                 shortDescription = Console.ReadLine();
-                Console.WriteLine();
                 Console.Write("What is the amount of points associated with this goal? ");
                 points = Console.ReadLine();
-                Console.WriteLine();
                 Console.Write("How many times does this goal need to be accomplished for a bonus? ");
                 int target = int.Parse(Console.ReadLine());
-                Console.WriteLine();
                 Console.Write("What is the bonus for accomplishing it that many times? ");
                 int bonus = int.Parse(Console.ReadLine());
-                Console.WriteLine();
                 ChecklistGoal checklistGoal = new ChecklistGoal(shortName, shortDescription, points, target, bonus, 0);
                 _goals.Add(checklistGoal);
                 break;
@@ -204,7 +195,7 @@ public class GoalManager
 
     public void SaveGoals()
     {
-        Console.WriteLine("What is the filename for the goal file? ");
+        Console.Write("What is the filename for the goal file? ");
         string filename = Console.ReadLine();
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
@@ -218,8 +209,9 @@ public class GoalManager
 
     public void LoadGoals()
     {
-        Console.WriteLine("What is the filename for the goal file? ");
+        Console.Write("What is the filename for the goal file? ");
         string filename = Console.ReadLine();
+        Console.WriteLine();
         string[] lines = System.IO.File.ReadAllLines(filename);
 
         if (lines.Length > 0)
