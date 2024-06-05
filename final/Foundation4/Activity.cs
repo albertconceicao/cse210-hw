@@ -8,7 +8,6 @@ public abstract class Activity
         _date = date;
         _minutes = minutes;
     }
-
     protected DateTime Date => _date;
     protected int Minutes => _minutes;
 
